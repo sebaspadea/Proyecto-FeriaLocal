@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index]
+  
   def index
     if params[:query].present?
       @found = []
@@ -11,6 +12,9 @@ class MoviesController < ApplicationController
       end
     end
   end
+
+
+  private
 
   def fetch_movies(title)
     RestClient.get "http://www.omdbapi.com/?s=#{title}&apikey=#{ENV["OMDB_APIKEY"]}"
