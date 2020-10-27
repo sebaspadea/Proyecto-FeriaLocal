@@ -1,0 +1,24 @@
+<div class="container-fluid my-5">
+  <% if !(@favorites.empty?) %>
+    <h6>Find <%= @favorites.count %> favorites favorites</h6>
+    <div class="row">
+      <% @favorites.each do |favorite| %>
+        <div class="col-md-3 my-3" id="movie-card">
+          <div class="card">
+              <%= image_tag favorite.poster, class: "img-fluid", crop: :fill %>
+          </div>
+          <div class="card-footer">
+            <h4 class="text-truncate"> <%= favorite.title %> </h4>
+              <h6> <%= favorite.year %> </h6>  
+            <div class="d-flex justify-content-between">
+              <%= link_to "Remove favorite", movie_path(favorite.id), class: "text-muted", method: :patch %>
+              <% if favorite.favorite%>
+                <%= "⭐" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

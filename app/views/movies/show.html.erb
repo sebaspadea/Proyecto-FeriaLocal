@@ -20,6 +20,10 @@
       <% @movie["Ratings"].each do |r| %>
         <h5><%= r["Source"]%>: <%= r["Value"]%> <%= r["Source"] != "Rotten Tomatoes" ? "⭐": "🍅" %></h5>
       <% end %>
+      <div class="d-flex justify-content-around my-3">
+          <%= link_to "Mark as favorite", create_path(@movie["imdbID"], favorite: true), class: "btn btn-outline-warning", method: :post%>
+          <%= link_to "Mark as pending", create_path(@movie["imdbID"], favorite: false), class: "btn btn-outline-danger", method: :post%>
+      </div>
     </div>
   </div>
 </div>
