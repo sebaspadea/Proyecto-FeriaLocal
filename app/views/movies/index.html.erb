@@ -1,0 +1,44 @@
+<div class="container my-3">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+        <div class="d-flex">
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control string required",
+          placeholder: "Find a movie or serie",
+          id: "search_query"
+          %>
+          <%= submit_tag "Search", class: "btn btn-warning" %>
+        </div>        
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <% if !(@found.nil?) %>
+    <h6>Find <%= @found.count %> movies</h6>
+    <div class="row">
+      <% @found.each do |movie| %>
+        <div class="col-md-3 my-3" id="movie-card">
+          <div class="card">
+          <% if movie["Poster"] != "N/A" %>
+              <%= image_tag movie["Poster"], class: "img-fluid", crop: :fill %>
+          <% else %>
+            <%= image_tag "https://fussionaireyfuego.com/assets/archivos/sin_imagen.jpg", class: "img-fluid", crop: :fill %>
+          <% end %>
+          </div>
+          <div class="card-footer">
+            <h4 class="text-truncate"> <%= movie["Title"] %> </h4>
+            <div class="d-flex justify-content-between">
+              <h5> <%= movie["Type"] %> </h5>
+              <h6> <%= movie["Year"] %> </h6>  
+            </div>
+            <div class="d-flex justify-content-between">
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
