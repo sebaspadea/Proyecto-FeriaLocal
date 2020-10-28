@@ -50,7 +50,7 @@ class MoviesController < ApplicationController
       @movie.update(favorite: true)
       @movie.update(pending: false)
     end
-    redirect_to root_path
+    redirect_to favorites_path(current_user)
   end
 
   private
