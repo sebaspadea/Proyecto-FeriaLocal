@@ -1,15 +1,11 @@
 <div class="container-fluid my-5">
   <% if !(@pending.empty?) %>
-    <h6><%= @pending.count %> movies to watch</h6>
+    <h6><%= @pending.count %> saved to watch</h6>
     <div class="row">
       <% @pending.each do |p| %>
           <div class="col-md-3 my-3">
             <div class="card">
-              <% if p.poster != "N/A" %>
-                  <%= image_tag p.poster, class: "card-img-top imagen", crop: :fill %>
-              <% else %>
-                <%= image_tag "https://fussionaireyfuego.com/assets/archivos/sin_imagen.jpg", class: "card-img-top imagen", crop: :fill %>
-              <% end %>
+              <%= image_tag p.poster, class: "card-img-top imagen", crop: :fill %>
               <div class="card-body">
                 <h4 class="card-title text-truncate"> <%= p.title %> </h4>
                   <h6> <%= p.year %> </h6>  

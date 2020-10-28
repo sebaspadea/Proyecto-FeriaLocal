@@ -7,7 +7,9 @@ class MoviesController < ApplicationController
       @data = JSON.parse(fetch_movies(params[:query]))
       if(@data["Response"] != "False")
         @data["Search"].each do |m|
-          @found << m
+          if (m["Poster"] != "N/A")
+            @found << m
+          end
         end
       end
     end

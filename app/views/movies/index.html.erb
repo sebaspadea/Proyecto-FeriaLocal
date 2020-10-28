@@ -17,17 +17,13 @@
 </div>
 <div class="container-fluid">
   <% if !(@found.nil?) %>
-    <h6>Find <%= @found.count %> movies</h6>
+    <h6><%= @found.count %> results</h6>
     <div class="row">
       <% @found.each do |movie| %>
         <%= link_to show_path(movie["imdbID"], query: params[:query])  do %>
           <div class="col-md-3 my-3">
             <div class="card">
-              <% if movie["Poster"] != "N/A" %>
-                  <%= image_tag movie["Poster"], class: "card-img-top imagen", crop: :fill %>
-              <% else %>
-                <%= image_tag "https://fussionaireyfuego.com/assets/archivos/sin_imagen.jpg", class: "card-img-top imagen", crop: :fill %>
-              <% end %>
+              <%= image_tag movie["Poster"], class: "card-img-top imagen", crop: :fill %>
               <div class="card-body">
                 <h4 class="card-title text-truncate"> <%= link_to movie["Title"], show_path(movie["imdbID"], query: params[:query]), class:"text-reset"%> </h4>
                 <div class="d-flex justify-content-between">
