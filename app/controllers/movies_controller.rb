@@ -7,7 +7,9 @@ class MoviesController < ApplicationController
       @data = JSON.parse(fetch_movies(params[:query]))
       if(@data["Response"] != "False")
         @data["Search"].each do |m|
-          @found << m
+          if (m["Poster"] != "N/A")
+            @found << m
+          end
         end
       end
     end
@@ -48,7 +50,7 @@ class MoviesController < ApplicationController
       @movie.update(favorite: true)
       @movie.update(pending: false)
     end
-    redirect_to root_path
+    redirect_to favorites_path(current_user)
   end
 
   private

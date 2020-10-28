@@ -1,15 +1,11 @@
 <div class="container-fluid my-5">
   <% if !(@favorites.empty?) %>
-    <h6>Find <%= @favorites.count %> favorites favorites</h6>
+    <h6>Find <%= @favorites.count %> favorites</h6>
     <div class="row">
       <% @favorites.each do |favorite| %>
           <div class="col-md-3 my-3">
             <div class="card">
-              <% if favorite.poster != "N/A" %>
-                  <%= image_tag favorite.poster, class: "card-img-top imagen", crop: :fill %>
-              <% else %>
-                <%= image_tag "https://fussionaireyfuego.com/assets/archivos/sin_imagen.jpg", class: "card-img-top imagen", crop: :fill %>
-              <% end %>
+              <%= image_tag favorite.poster, class: "card-img-top imagen", crop: :fill %>
               <div class="card-body">
                 <h4 class="text-truncate"> <%= favorite.title %> </h4>
                   <h6> <%= favorite.year %> </h6>  
