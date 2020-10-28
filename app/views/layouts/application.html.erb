@@ -12,8 +12,15 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= yield %>
-    <%= render 'shared/flashes' %>
+    <div id="page-container">
+      <div id="content-wrap">
+        <%= render('shared/navbar') %>
+        <!-- END OF NAV BAR -->
+        <% flash.each do |type, msg| %> <div class="alert alert-success alert-dismissible alert-fade alert-fadein"> <%= msg %> </div> <% end %>
+        <%= yield %>
+      </div>
+      <%= render('shared/footer') %>
+    </div>
+
   </body>
 </html>
