@@ -20,22 +20,24 @@
     <h6>Find <%= @found.count %> movies</h6>
     <div class="row">
       <% @found.each do |movie| %>
-        <div class="col-md-3 my-3" id="movie-card">
-          <div class="card">
-          <% if movie["Poster"] != "N/A" %>
-              <%= image_tag movie["Poster"], class: "img-fluid", crop: :fill %>
-          <% else %>
-            <%= image_tag "https://fussionaireyfuego.com/assets/archivos/sin_imagen.jpg", class: "img-fluid", crop: :fill %>
-          <% end %>
-          </div>
-          <div class="card-footer">
-            <h4 class="text-truncate"> <%= link_to movie["Title"], show_path(movie["imdbID"], query: params[:query]), class: "text-muted"%> </h4>
-            <div class="d-flex justify-content-between">
-              <h5> <%= movie["Type"] %> </h5>
-              <h6> <%= movie["Year"] %> </h6>  
+        <%= link_to show_path(movie["imdbID"], query: params[:query])  do %>
+          <div class="col-md-3 my-3" id="movie-card">
+            <div class="card">
+            <% if movie["Poster"] != "N/A" %>
+                <%= image_tag movie["Poster"], class: "img-fluid imagen", crop: :fill %>
+            <% else %>
+              <%= image_tag "https://fussionaireyfuego.com/assets/archivos/sin_imagen.jpg", class: "img-fluid", crop: :fill %>
+            <% end %>
+            </div>
+            <div class="card-footer">
+              <h4 class="text-truncate"> <%= link_to movie["Title"], show_path(movie["imdbID"], query: params[:query]), class: "text-muted"%> </h4>
+              <div class="d-flex justify-content-between">
+                <h5> <%= movie["Type"] %> </h5>
+                <h6> <%= movie["Year"] %> </h6>  
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>
