@@ -1,5 +1,5 @@
 <div class="container mt-3">
-  <%= link_to "Go back", root_path(query: params[:query])%>
+  <%= link_to "Go back", root_path(query: params[:query]), class:"text-reset text-monospace"%>
   <h1><%= @movie["Title"]%></h1>
   <p><%= @movie["Released"]%>, <%= @movie["Runtime"]%>, <%= @movie["Genre"]%> </p>
   <div class="row">
@@ -12,7 +12,6 @@
     <div class="col-md-6">
       <h3 class="mt-1 mb-3 border-bottom border-warning text-center">Information</h3>
       <h5>Director: <%= @movie["Director"]%></h5>
-      <h5>Writer: <%= @movie["Writer"]%></h5>
       <h5>Actors: <%= @movie["Actors"]%></h5>
       <h5>Awards: <%= @movie["Awards"]%></h5>
       <h5>Country: <%= @movie["Country"]%></h5>
@@ -21,9 +20,9 @@
       <% @movie["Ratings"].each do |r| %>
         <h5><%= r["Source"]%>: <%= r["Value"]%> <%= r["Source"] != "Rotten Tomatoes" ? "⭐": "🍅" %></h5>
       <% end %>
-      <div class="d-flex justify-content-around my-3">
-          <%= link_to "Mark as favorite", create_path(@movie["imdbID"], favorite: true), class: "btn btn-outline-warning", method: :post%>
-          <%= link_to "Mark as pending", create_path(@movie["imdbID"], favorite: false), class: "btn btn-outline-danger", method: :post%>
+      <div class="d-flex justify-content-around mt-3">
+          <%= link_to "Mark as favorite", create_path(@movie["imdbID"], favorite: true), class: "btn btn-outline-info", method: :post%>
+          <%= link_to "Mark as pending", create_path(@movie["imdbID"], favorite: false), class: "btn btn-outline-warning", method: :post%>
       </div>
     </div>
   </div>

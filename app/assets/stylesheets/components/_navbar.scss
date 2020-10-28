@@ -1,7 +1,9 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: transparent;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-bottom: 1px solid rgba(144, 144, 144, 0.746);
+  font-size: 18px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,4 +12,16 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #C2DFE3 !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #90d4df !important;
+}
+
+.navbar-nav .nav-link:active {
+  color: #90d4df !important;
 }
