@@ -1,4 +1,5 @@
 <div class="container mt-3">
+  <%= link_to "Go back", root_path(query: params[:query])%>
   <h1><%= @movie["Title"]%></h1>
   <p><%= @movie["Released"]%>, <%= @movie["Runtime"]%>, <%= @movie["Genre"]%> </p>
   <div class="row">
